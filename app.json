@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "iungo-manager",
-    "slug": "iungo-manager",
-    "scheme": "iungo-manager",
-    "version": "1.0.0",
+    "name": "MyCollectionsHub",
+    "slug": "my-collections-hub",
+    "scheme": "my-collections-hub",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",
     "userInterfaceStyle": "automatic",
@@ -14,7 +14,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jereko.mycollectionshub"
     },
     "android": {
       "adaptiveIcon": {
@@ -44,6 +45,16 @@
           "root": "./src/app"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false,
+        "root": "./src/app"
+      },
+      "eas": {
+        "projectId": "243bdde1-790b-45c6-9e9f-a71898fbae06"
+      }
+    },
+    "owner": "jereko"
   }
 }

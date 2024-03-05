@@ -39,7 +39,17 @@ const Layout = () => {
 
   if (!loaded) {
     return (
-      <RnView>
+      <RnView
+        style={{
+          top: insets.top,
+          bottom: insets.bottom,
+          left: insets.left,
+          right: insets.right,
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <RnText>Failed to load resources</RnText>
       </RnView>
     )
@@ -47,7 +57,17 @@ const Layout = () => {
 
   if (!hasRunMigrations || !!runningMigrationError) {
     return (
-      <RnView>
+      <RnView
+        style={{
+          top: insets.top,
+          bottom: insets.bottom,
+          left: insets.left,
+          right: insets.right,
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <RnText>...loading</RnText>
       </RnView>
     )
@@ -56,12 +76,20 @@ const Layout = () => {
   // Main app view
   return (
     <RnView onLayout={onLayoutRootView} style={{ flex: 1 }}>
+      <RnView
+        style={{
+          height: insets.top / 4,
+          backgroundColor: colorTheme.colors.background,
+        }}
+      />
       <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
         <ThemeProvider value={colorTheme}>
           <ConfigProvider>
             <Tabs
               safeAreaInsets={{
-                top: insets.top,
+                bottom: insets.bottom,
+                left: insets.left,
+                right: insets.right,
               }}
               backBehavior="history"
               screenOptions={{

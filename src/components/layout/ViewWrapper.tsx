@@ -11,7 +11,6 @@ export const ViewWrapper = ({ title, style, ...rest }: ViewWrapperProps) => {
 
   const styles = style as object
   const mergedStyle = {
-    top: 0,
     flex: 1,
     ...styles,
   } as ViewProps["style"]
