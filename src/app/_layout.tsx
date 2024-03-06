@@ -5,7 +5,7 @@ import { SplashScreen, Tabs } from "expo-router"
 import { useCallback } from "react"
 import { useColorScheme } from "react-native"
 import { View as RnView, Text as RnText } from "react-native"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-context"
 import { TamaguiProvider } from "tamagui"
 
 import useSqliteDb from "@/hooks/useSqliteDb"
@@ -49,6 +49,7 @@ const Layout = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
+        onLayout={onLayoutRootView}
       >
         <RnText>Failed to load resources</RnText>
       </RnView>
@@ -67,6 +68,7 @@ const Layout = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
+        onLayout={onLayoutRootView}
       >
         <RnText>...loading</RnText>
       </RnView>
@@ -75,45 +77,42 @@ const Layout = () => {
 
   // Main app view
   return (
-    <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
-      <ThemeProvider value={colorTheme}>
-        <ConfigProvider>
-          <Tabs
-            safeAreaInsets={{
-              bottom: insets.bottom,
-              left: insets.left,
-              right: insets.right,
-            }}
-            backBehavior="history"
-            screenOptions={{
-              tabBarActiveTintColor: "red",
-              tabBarInactiveTintColor: colorTheme.colors.text,
-            }}
-          >
-            <Tabs.Screen
-              // Name of the route to hide.
-              name="index"
-              options={{
-                title: "Home",
-                // This tab will no longer show up in the tab bar.
-                href: "/",
-                headerShown: false,
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
+        <ThemeProvider value={colorTheme}>
+          <ConfigProvider>
+            <Tabs
+              backBehavior="history"
+              screenOptions={{
+                tabBarActiveTintColor: "red",
+                tabBarInactiveTintColor: colorTheme.colors.text,
               }}
-            />
-            <Tabs.Screen
-              // Name of the route to hide.
-              name="config"
-              options={{
-                title: "Config",
-                // This tab will no longer show up in the tab bar.
-                href: "/config",
-                headerShown: false,
-              }}
-            />
-          </Tabs>
-        </ConfigProvider>
-      </ThemeProvider>
-    </TamaguiProvider>
+            >
+              <Tabs.Screen
+                // Name of the route to hide.
+                name="index"
+                options={{
+                  title: "Home",
+                  // This tab will no longer show up in the tab bar.
+                  href: "/",
+                  headerShown: true,
+                }}
+              />
+              <Tabs.Screen
+                // Name of the route to hide.
+                name="config"
+                options={{
+                  title: "Config",
+                  // This tab will no longer show up in the tab bar.
+                  href: "/config",
+                  headerShown: true,
+                }}
+              />
+            </Tabs>
+          </ConfigProvider>
+        </ThemeProvider>
+      </TamaguiProvider>
+    </SafeAreaProvider>
   )
 }
 

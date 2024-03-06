@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Card, ScrollView, Text, View, XStack } from "tamagui"
 
-import { ViewWrapper } from "@/components/layout/ViewWrapper"
 import { db } from "@/db/client"
 import { type AppConfig, appConfigTable } from "@/db/schema"
 
@@ -18,8 +17,18 @@ const DBView = () => {
   }, [])
 
   return (
-    <ViewWrapper title="Configuration">
-      <ScrollView height="100%" width="100%" backgroundColor="$background" borderRadius="$2">
+    <View
+      style={{
+        paddingHorizontal: 20,
+      }}
+    >
+      <ScrollView
+        height="100%"
+        width="100%"
+        style={{
+          paddingTop: 20,
+        }}
+      >
         <XStack $sm={{ flexDirection: "column" }} gap={10}>
           {database?.map((config) => (
             <Card
@@ -31,6 +40,7 @@ const DBView = () => {
               <Card.Header>
                 <Text>{config.key}</Text>
               </Card.Header>
+              <Card.Background />
               <View
                 style={{
                   display: "flex",
@@ -41,12 +51,11 @@ const DBView = () => {
               >
                 <Text>{config.value}</Text>
               </View>
-              <Card.Background />
             </Card>
           ))}
         </XStack>
       </ScrollView>
-    </ViewWrapper>
+    </View>
   )
 }
 

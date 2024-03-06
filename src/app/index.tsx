@@ -1,10 +1,13 @@
 import { Card, Text, View } from "tamagui"
 
-import { ViewWrapper } from "@/components/layout/ViewWrapper"
-
 const Home = () => {
   return (
-    <ViewWrapper>
+    <View
+      style={{
+        paddingTop: 20,
+        paddingHorizontal: 20,
+      }}
+    >
       <Card>
         <Card.Header>
           <Text
@@ -35,7 +38,7 @@ const Home = () => {
         </View>
         <Card.Background />
       </Card>
-    </ViewWrapper>
+    </View>
   )
 }
 
