@@ -75,53 +75,45 @@ const Layout = () => {
 
   // Main app view
   return (
-    <RnView onLayout={onLayoutRootView} style={{ flex: 1 }}>
-      <RnView
-        style={{
-          height: insets.top / 4,
-          backgroundColor: colorTheme.colors.background,
-        }}
-      />
-      <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
-        <ThemeProvider value={colorTheme}>
-          <ConfigProvider>
-            <Tabs
-              safeAreaInsets={{
-                bottom: insets.bottom,
-                left: insets.left,
-                right: insets.right,
+    <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme}>
+      <ThemeProvider value={colorTheme}>
+        <ConfigProvider>
+          <Tabs
+            safeAreaInsets={{
+              bottom: insets.bottom,
+              left: insets.left,
+              right: insets.right,
+            }}
+            backBehavior="history"
+            screenOptions={{
+              tabBarActiveTintColor: "red",
+              tabBarInactiveTintColor: colorTheme.colors.text,
+            }}
+          >
+            <Tabs.Screen
+              // Name of the route to hide.
+              name="index"
+              options={{
+                title: "Home",
+                // This tab will no longer show up in the tab bar.
+                href: "/",
+                headerShown: false,
               }}
-              backBehavior="history"
-              screenOptions={{
-                tabBarActiveTintColor: "red",
-                tabBarInactiveTintColor: colorTheme.colors.text,
+            />
+            <Tabs.Screen
+              // Name of the route to hide.
+              name="config"
+              options={{
+                title: "Config",
+                // This tab will no longer show up in the tab bar.
+                href: "/config",
+                headerShown: false,
               }}
-            >
-              <Tabs.Screen
-                // Name of the route to hide.
-                name="index"
-                options={{
-                  title: "Home",
-                  // This tab will no longer show up in the tab bar.
-                  href: "/",
-                  headerShown: false,
-                }}
-              />
-              <Tabs.Screen
-                // Name of the route to hide.
-                name="config"
-                options={{
-                  title: "Config",
-                  // This tab will no longer show up in the tab bar.
-                  href: "/config",
-                  headerShown: false,
-                }}
-              />
-            </Tabs>
-          </ConfigProvider>
-        </ThemeProvider>
-      </TamaguiProvider>
-    </RnView>
+            />
+          </Tabs>
+        </ConfigProvider>
+      </ThemeProvider>
+    </TamaguiProvider>
   )
 }
 
