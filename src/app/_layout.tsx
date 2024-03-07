@@ -9,6 +9,7 @@ import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-cont
 import { TamaguiProvider } from "tamagui"
 
 import useSqliteDb from "@/hooks/useSqliteDb"
+import { useUpdates } from "@/hooks/useUpdates"
 import { ConfigProvider } from "@/providers/ConfigProvider"
 
 import "../../tamagui-web.css"
@@ -20,6 +21,9 @@ const Layout = () => {
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   })
+
+  // Checking for updates
+  const updateStatus = useUpdates()
 
   // Set color scheme based on the device's theme
   const colorScheme = useColorScheme() == "light" ? "light" : "dark"
@@ -35,7 +39,7 @@ const Layout = () => {
     if (loaded) {
       void SplashScreen.hideAsync()
     }
-  }, [loaded])
+  }, [loaded, updateStatus])
 
   if (!loaded) {
     return (
