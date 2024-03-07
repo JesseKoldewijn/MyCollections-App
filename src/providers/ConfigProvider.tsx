@@ -1,6 +1,8 @@
+import NetInfo from "@react-native-community/netinfo"
 import { eq } from "drizzle-orm"
 import * as network from "expo-network"
 import { createContext, useContext, useEffect, useState } from "react"
+
 import { db } from "@/db/client"
 import { appConfigTable, type AppConfig } from "@/db/schema"
 
@@ -65,6 +67,14 @@ export const ConfigProvider = ({ children }: ConfigProviderProps) => {
 
   useEffect(() => {
     void setLastNetworkState()
+
+    const unsubscribe = NetInfo.addEventListener(() => {
+      void setLastNetworkState()
+    })
+
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   const val = { config, configState, setConfigEntry }
