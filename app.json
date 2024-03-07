@@ -14,12 +14,10 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "image": "latest",
       "supportsTablet": true,
       "bundleIdentifier": "com.jereko.mycollectionshub"
     },
     "android": {
-      "image": "latest",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
