@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#a600c7"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -20,7 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#a600c7"
       },
       "package": "com.jereko.mycollectionshub"
     },
@@ -45,12 +45,6 @@
         {
           "root": "./src/app"
         }
-      ],
-      [
-        "expo-updates",
-        {
-          "username": "account-username"
-        }
       ]
     ],
     "extra": {
@@ -62,12 +56,6 @@
         "projectId": "243bdde1-790b-45c6-9e9f-a71898fbae06"
       }
     },
-    "owner": "jereko",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/243bdde1-790b-45c6-9e9f-a71898fbae06"
-    }
+    "owner": "jereko"
   }
 }
