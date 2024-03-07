@@ -84,7 +84,7 @@ const Layout = () => {
             <Tabs
               backBehavior="history"
               screenOptions={{
-                tabBarActiveTintColor: "red",
+                tabBarActiveTintColor: "#a600c7",
                 tabBarInactiveTintColor: colorTheme.colors.text,
               }}
             >

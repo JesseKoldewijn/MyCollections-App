@@ -5,7 +5,7 @@ import { db } from "@/db/client"
 import { type AppConfig, appConfigTable } from "@/db/schema"
 
 const StyledView = styled(View, {
-  paddingHorizontal: 20,
+  paddingHorizontal: 10,
 })
 
 const StyledScrollView = styled(ScrollView, {

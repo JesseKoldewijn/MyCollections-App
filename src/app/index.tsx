@@ -2,14 +2,14 @@ import { Card, Text, View, styled } from "tamagui"
 
 const StyledTopView = styled(View, {
   paddingTop: 20,
-  paddingHorizontal: 20,
+  paddingHorizontal: 10,
 })
 
 const StyledCardContent = styled(View, {
   display: "flex",
   gap: 5,
   paddingBottom: 15,
-  paddingHorizontal: 20,
+  paddingHorizontal: 10,
 })
 
 const StyledTitle = styled(Text, {
