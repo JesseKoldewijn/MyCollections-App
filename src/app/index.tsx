@@ -5,37 +5,33 @@ const StyledTopView = styled(View, {
   paddingHorizontal: 20,
 })
 
+const StyledCardContent = styled(View, {
+  display: "flex",
+  gap: 5,
+  paddingBottom: 15,
+  paddingHorizontal: 20,
+})
+
+const StyledTitle = styled(Text, {
+  fontSize: 18,
+  fontWeight: "bold",
+  textAlign: "center",
+})
+
+const StyledSubTitle = styled(Text, {
+  textAlign: "center",
+})
+
 const Home = () => {
   return (
     <StyledTopView>
       <Card>
         <Card.Header>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
-            RN Core
-          </Text>
+          <StyledTitle>RN Core</StyledTitle>
         </Card.Header>
-        <View
-          style={{
-            display: "flex",
-            gap: 5,
-            paddingBottom: 15,
-            paddingHorizontal: 20,
-          }}
-        >
-          <Text
-            style={{
-              textAlign: "center",
-            }}
-          >
-            Welcome to the App!
-          </Text>
-        </View>
+        <StyledCardContent>
+          <StyledSubTitle>Welcome to the App!</StyledSubTitle>
+        </StyledCardContent>
         <Card.Background />
       </Card>
     </StyledTopView>
