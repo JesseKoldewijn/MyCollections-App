@@ -4,15 +4,15 @@
   },
   "build": {
     "development": {
-      "channel": "next",
+      "channel": "dev",
       "developmentClient": true,
       "distribution": "internal"
     },
-    "preview": {
+    "next": {
       "channel": "next",
       "distribution": "internal"
     },
-    "production": {
+    "main": {
       "channel": "main"
     }
   },
