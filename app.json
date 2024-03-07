@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jereko.mycollectionshub"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png",
@@ -43,6 +44,12 @@
         "expo-router",
         {
           "root": "./src/app"
+        }
+      ],
+      [
+        "expo-updates",
+        {
+          "username": "account-username"
         }
       ]
     ],

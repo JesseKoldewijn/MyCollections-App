@@ -16,9 +16,10 @@
         "env": {
           "PLATFORM": "ios"
         }
-      }
+      },
+      "channel": "base"
     },
-    "development": {
+    "dev": {
       "extends": "base",
       "channel": "dev",
       "developmentClient": true,
