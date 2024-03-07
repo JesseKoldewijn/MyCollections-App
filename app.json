@@ -57,6 +57,12 @@
         "projectId": "243bdde1-790b-45c6-9e9f-a71898fbae06"
       }
     },
-    "owner": "jereko"
+    "owner": "jereko",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/243bdde1-790b-45c6-9e9f-a71898fbae06"
+    }
   }
 }
