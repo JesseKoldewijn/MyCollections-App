@@ -4,22 +4,39 @@
     "appVersionSource": "remote"
   },
   "build": {
+    "base": {
+      "android": {
+        "image": "default",
+        "env": {
+          "PLATFORM": "android"
+        }
+      },
+      "ios": {
+        "image": "latest",
+        "env": {
+          "PLATFORM": "ios"
+        }
+      }
+    },
     "development": {
+      "extends": "base",
       "channel": "dev",
       "developmentClient": true,
       "distribution": "internal"
     },
     "next": {
+      "extends": "base",
       "channel": "next",
       "distribution": "internal",
       "autoIncrement": true
     },
     "main": {
+      "extends": "base",
       "channel": "main",
       "autoIncrement": true
     }
   },
   "submit": {
-    "production": {}
+    "main": {}
   }
 }
