@@ -1,8 +1,23 @@
 import { useEffect, useState } from "react"
-import { Card, ScrollView, Text, View, XStack } from "tamagui"
+import { Card, ScrollView, Text, View, XStack, styled } from "tamagui"
 
 import { db } from "@/db/client"
 import { type AppConfig, appConfigTable } from "@/db/schema"
+
+const StyledView = styled(View, {
+  paddingHorizontal: 20,
+})
+
+const StyledScrollView = styled(ScrollView, {
+  paddingTop: 20,
+})
+
+const StyledConfigItem = styled(View, {
+  display: "flex",
+  gap: 5,
+  paddingBottom: 15,
+  paddingHorizontal: 20,
+})
 
 const DBView = () => {
   const [database, setDatabase] = useState<AppConfig[]>()
@@ -17,18 +32,8 @@ const DBView = () => {
   }, [])
 
   return (
-    <View
-      style={{
-        paddingHorizontal: 20,
-      }}
-    >
-      <ScrollView
-        height="100%"
-        width="100%"
-        style={{
-          paddingTop: 20,
-        }}
-      >
+    <StyledView>
+      <StyledScrollView height="100%" width="100%">
         <XStack $sm={{ flexDirection: "column" }} gap={10}>
           {database?.map((config) => (
             <Card
@@ -41,21 +46,14 @@ const DBView = () => {
                 <Text>{config.key}</Text>
               </Card.Header>
               <Card.Background />
-              <View
-                style={{
-                  display: "flex",
-                  gap: 5,
-                  paddingBottom: 15,
-                  paddingHorizontal: 20,
-                }}
-              >
+              <StyledConfigItem>
                 <Text>{config.value}</Text>
-              </View>
+              </StyledConfigItem>
             </Card>
           ))}
         </XStack>
-      </ScrollView>
-    </View>
+      </StyledScrollView>
+    </StyledView>
   )
 }
 

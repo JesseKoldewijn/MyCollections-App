@@ -1,13 +1,13 @@
-import { Card, Text, View } from "tamagui"
+import { Card, Text, View, styled } from "tamagui"
+
+const StyledTopView = styled(View, {
+  paddingTop: 20,
+  paddingHorizontal: 20,
+})
 
 const Home = () => {
   return (
-    <View
-      style={{
-        paddingTop: 20,
-        paddingHorizontal: 20,
-      }}
-    >
+    <StyledTopView>
       <Card>
         <Card.Header>
           <Text
@@ -38,7 +38,7 @@ const Home = () => {
         </View>
         <Card.Background />
       </Card>
-    </View>
+    </StyledTopView>
   )
 }
 
