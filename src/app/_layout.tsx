@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native"
 import { useFonts } from "expo-font"
 import { SplashScreen, Tabs } from "expo-router"
@@ -9,7 +8,6 @@ import { SafeAreaProvider, useSafeAreaInsets } from "react-native-safe-area-cont
 import { TamaguiProvider } from "tamagui"
 
 import useSqliteDb from "@/hooks/useSqliteDb"
-import { useUpdates } from "@/hooks/useUpdates"
 import { ConfigProvider } from "@/providers/ConfigProvider"
 
 import "../../tamagui-web.css"
@@ -18,12 +16,11 @@ import { tamaguiConfig } from "../../tamagui.config"
 const Layout = () => {
   // Load tamagui fonts
   const [loaded] = useFonts({
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   })
-
-  // Checking for updates
-  const updateStatus = useUpdates()
 
   // Set color scheme based on the device's theme
   const colorScheme = useColorScheme() == "light" ? "light" : "dark"
@@ -39,7 +36,7 @@ const Layout = () => {
     if (loaded) {
       void SplashScreen.hideAsync()
     }
-  }, [loaded, updateStatus])
+  }, [loaded])
 
   if (!loaded) {
     return (

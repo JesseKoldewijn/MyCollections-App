@@ -16,28 +16,24 @@
         "env": {
           "PLATFORM": "ios"
         }
-      },
-      "channel": "base"
+      }
     },
-    "dev": {
+    "development": {
       "extends": "base",
-      "channel": "dev",
       "developmentClient": true,
       "distribution": "internal"
     },
-    "next": {
+    "preview": {
       "extends": "base",
-      "channel": "next",
       "distribution": "internal",
       "autoIncrement": true
     },
-    "main": {
+    "production": {
       "extends": "base",
-      "channel": "main",
       "autoIncrement": true
     }
   },
   "submit": {
-    "main": {}
+    "production": {}
   }
 }
