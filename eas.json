@@ -1,19 +1,22 @@
 {
   "cli": {
-    "version": ">= 7.3.0"
+    "version": ">= 7.3.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
-      "channel": "next",
+      "channel": "dev",
       "developmentClient": true,
       "distribution": "internal"
     },
-    "preview": {
+    "next": {
       "channel": "next",
-      "distribution": "internal"
+      "distribution": "internal",
+      "autoIncrement": true
     },
-    "production": {
-      "channel": "main"
+    "main": {
+      "channel": "main",
+      "autoIncrement": true
     }
   },
   "submit": {
