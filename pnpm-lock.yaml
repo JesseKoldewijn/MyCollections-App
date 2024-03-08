@@ -89,6 +89,9 @@ dependencies:
   tamagui:
     specifier: ^1.90.16
     version: 1.90.16(@types/react@18.2.61)(react-dom@18.2.0)(react-native-web@0.19.10)(react-native@0.73.4)(react@18.2.0)
+  zustand:
+    specifier: ^4.5.2
+    version: 4.5.2(@types/react@18.2.61)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
