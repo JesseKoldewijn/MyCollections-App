@@ -1,93 +1,29 @@
-import NetInfo from "@react-native-community/netinfo"
-import { eq } from "drizzle-orm"
-import * as network from "expo-network"
-import { createContext, useContext, useEffect, useState } from "react"
+import netInfo from "@react-native-community/netinfo"
+import { useEffect } from "react"
 
-import { db } from "@/db/client"
-import { appConfigTable, type AppConfig } from "@/db/schema"
+import useConfigStore from "@/stores/config/root"
 
 type ConfigProviderProps = {
   children: React.ReactNode
 }
 
-type ConfigContextType = {
-  config: () => Promise<AppConfig[]>
-  configState: AppConfig[]
-  setConfigEntry: (key: string, value: string) => Promise<void>
-}
-
-const ConfigContext = createContext<ConfigContextType>({
-  config: async () => [],
-  configState: [],
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setConfigEntry: async () => {},
-})
-
 export const ConfigProvider = ({ children }: ConfigProviderProps) => {
-  const [configState, setConfigState] = useState<AppConfig[]>([])
+  const setNetState = useConfigStore((store) => store.setNetworkConfig)
+  const setConfigStore = useConfigStore((store) => store.getConfig)
 
-  const config = async () => {
-    const config = await db.select().from(appConfigTable).execute()
-    setConfigState(config)
-    return config
-  }
-
-  const setConfigEntry = async (key: string, value: string) => {
-    const keyExist = await db
-      .selectDistinct()
-      .from(appConfigTable)
-      .where(eq(appConfigTable.key, key))
-      .execute()
-
-    if (keyExist.length === 0) {
-      await db
-        .insert(appConfigTable)
-        .values({ key, value, createdAt: new Date().toUTCString() })
-        .execute()
-    } else {
-      await db
-        .update(appConfigTable)
-        .set({ value, lastUpdatedAt: new Date().toUTCString() })
-        .where(eq(appConfigTable.key, key))
-        .execute()
-    }
-
-    await config()
-  }
-
-  const setLastNetworkState = async () => {
-    const ipAddr = await network.getIpAddressAsync()
-    const networkType = await network.getNetworkStateAsync()
-
-    await setConfigEntry("lastNetworkType", networkType.type ?? "unknown")
-    await setConfigEntry("lastNetworkIP", ipAddr ?? "unknown")
-
-    await config()
+  const setNetworkConfig = async () => {
+    await setNetState().then(async () => {
+      await setConfigStore()
+    })
   }
 
   useEffect(() => {
-    void setLastNetworkState()
+    void setNetworkConfig()
 
-    const unsubscribe = NetInfo.addEventListener(() => {
-      void setLastNetworkState()
+    netInfo.addEventListener(() => {
+      void setNetworkConfig()
     })
-
-    return () => {
-      unsubscribe()
-    }
   }, [])
 
-  const val = { config, configState, setConfigEntry }
-
-  return <ConfigContext.Provider value={val}>{children}</ConfigContext.Provider>
-}
-
-export const useConfig = () => {
-  const { config, configState, setConfigEntry } = useContext(ConfigContext)
-
-  if (!config || !setConfigEntry) {
-    throw new Error("useConfig must be used within a ConfigProvider")
-  }
-
-  return { config, configState, setConfigEntry }
+  return children
 }
