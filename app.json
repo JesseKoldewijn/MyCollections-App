@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#a600c7"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.jereko.mycollectionshub"
@@ -45,7 +47,9 @@
         {
           "root": "./src/app"
         }
-      ]
+      ],
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
       "router": {
