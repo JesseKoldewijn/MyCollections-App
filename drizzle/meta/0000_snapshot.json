@@ -46,9 +46,7 @@
       "indexes": {
         "configuration_key_unique": {
           "name": "configuration_key_unique",
-          "columns": [
-            "key"
-          ],
+          "columns": ["key"],
           "isUnique": true
         }
       },

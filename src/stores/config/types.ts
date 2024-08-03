@@ -1,4 +1,4 @@
-import { type AppConfig } from "@/db/schema"
+import type { AppConfig } from "@/db/schema"
 
 export type ConfigStore = {
   config: AppConfig[]

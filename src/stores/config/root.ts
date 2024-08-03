@@ -1,7 +1,7 @@
 import { create } from "zustand"
 
 import { getConfig, resetConfig, setConfigEntry, setNetworkConfig } from "./handlers"
-import { type ConfigStore } from "./types"
+import type { ConfigStore } from "./types"
 
 const useConfigStore = create<ConfigStore>((set) => ({
   config: [],

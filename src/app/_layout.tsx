@@ -90,21 +90,17 @@ const Layout = () => {
               }}
             >
               <Tabs.Screen
-                // Name of the route to hide.
                 name="index"
                 options={{
                   title: "Home",
-                  // This tab will no longer show up in the tab bar.
                   href: "/",
                   headerShown: true,
                 }}
               />
               <Tabs.Screen
-                // Name of the route to hide.
                 name="config"
                 options={{
                   title: "Config",
-                  // This tab will no longer show up in the tab bar.
                   href: "/config",
                   headerShown: true,
                 }}
